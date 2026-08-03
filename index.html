@@ -14,58 +14,319 @@
 <meta property="og:image:width" content="1171">
 <meta property="og:image:height" content="1170">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:-apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    background:#f2f2f2;
-    color:#333;
+  :root{
+    --navy:#2c3a72;
+    --navy-soft:#5b699e;
+    --cream:#faf6ee;
+    --line:#dcd4c4;
   }
-  .frame{
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{
+    background:#e9e2d3;
+    color:var(--navy);
+    font-family:'Cormorant Garamond', serif;
+  }
+  .app{
     max-width:480px;
     margin:0 auto;
-    background:#fff;
+    background:var(--cream);
     min-height:100vh;
-    padding:40px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* ---------- Envelope intro ---------- */
+  #envelope{
+    position:fixed;
+    inset:0;
+    max-width:480px;
+    margin:0 auto;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    z-index:20;
+    cursor:grab;
+    touch-action:none;
+    user-select:none;
+    will-change:transform;
+    box-shadow:0 -10px 30px rgba(0,0,0,0.06) inset;
+  }
+  #envelope.dragging{ cursor:grabbing; }
+  .env-label{
+    font-family:'Poppins', sans-serif;
+    font-weight:300;
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--navy-soft);
+    margin-bottom:10px;
+  }
+  .env-names{
+    font-family:'Dancing Script', cursive;
+    font-size:34px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:36px;
+  }
+  .env-icon{ width:120px; height:auto; margin-bottom:20px; }
+  .env-open{
+    font-family:'Poppins', sans-serif;
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--navy-soft);
+  }
+  .env-arrow{
+    margin-top:14px;
+    animation:bounce 1.6s ease-in-out infinite;
+  }
+  .env-arrow svg{ width:18px; }
+  @keyframes bounce{
+    0%,100%{ transform:translateY(0); opacity:.4; }
+    50%{ transform:translateY(-6px); opacity:1; }
+  }
+
+  /* ---------- Main invitation ---------- */
+  #invite{
+    padding:56px 32px 20px;
     text-align:center;
   }
-  .photo{ width:200px; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px; }
-  h1{ font-size:20px; margin-bottom:8px; }
-  .names{ font-size:22px; font-weight:bold; margin:16px 0; }
-  .date{ font-size:15px; color:#666; margin-bottom:24px; }
-  hr{ border:none; border-top:1px solid #eee; margin:24px 0; }
-  section{ margin-bottom:28px; text-align:left; }
-  h2{ font-size:14px; color:#999; margin-bottom:8px; }
-  p{ font-size:15px; line-height:1.7; }
+  .tag{
+    font-family:'Poppins', sans-serif;
+    font-size:11px;
+    letter-spacing:3px;
+    color:var(--navy-soft);
+    margin-bottom:14px;
+  }
+  .save-date{
+    font-family:'Dancing Script', cursive;
+    font-size:38px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  .date-line{
+    margin-top:10px;
+    font-size:16px;
+    letter-spacing:2px;
+    color:var(--navy);
+  }
+  .date-line b{ font-size:19px; }
+  .venue-line{
+    margin-top:6px;
+    font-family:'Poppins', sans-serif;
+    font-size:11.5px;
+    letter-spacing:1px;
+    color:var(--navy-soft);
+    line-height:1.7;
+  }
+
+  .deco-icon{ width:56px; margin:30px auto; opacity:.85; }
+
+  .photo-oval{
+    width:230px;
+    height:290px;
+    margin:0 auto 28px;
+    border-radius:50% / 40%;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .photo-oval img{
+    width:100%; height:100%; object-fit:cover;
+  }
+
+  .names-script{
+    font-family:'Dancing Script', cursive;
+    font-size:30px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:6px;
+  }
+
+  .greeting{
+    margin:26px 0 6px;
+    font-size:16px;
+    line-height:1.9;
+    color:#4a5583;
+  }
+
+  .divider{
+    width:32px;
+    height:1px;
+    background:var(--line);
+    margin:34px auto;
+  }
+
+  .info-block{
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .info-block h3{
+    font-family:'Poppins', sans-serif;
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--navy-soft);
+    text-transform:uppercase;
+    margin-bottom:8px;
+    text-align:center;
+  }
+  .info-block p{
+    font-size:16.5px;
+    line-height:1.8;
+    text-align:center;
+    color:var(--navy);
+  }
+
+  footer{
+    padding:20px 32px 56px;
+    text-align:center;
+  }
+  footer .names-script{ font-size:22px; margin-bottom:6px; }
+  footer .contact{
+    font-family:'Poppins', sans-serif;
+    font-size:11px;
+    letter-spacing:1px;
+    color:var(--navy-soft);
+    margin-top:10px;
+  }
 </style>
 </head>
 <body>
-<div class="frame">
-  <img class="photo" src="couple.jpg" alt="정제우 류다현">
-  <h1>모바일 청첩장</h1>
-  <div class="names">정제우 ♥ 류다현</div>
-  <div class="date">2026년 10월 3일 (토) 오후 2시 30분</div>
-  <hr>
+<div class="app">
 
-  <section>
-    <h2>인사말</h2>
-    <p>저희 두 사람이 새로운 시작을 함께합니다.<br>귀한 걸음 하시어 축복해 주시면 감사하겠습니다.</p>
-  </section>
+  <div id="envelope">
+    <div class="env-label">청첩장이 도착했습니다</div>
+    <div class="env-names">정제우 &amp; 류다현</div>
+    <svg class="env-icon" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="18" width="144" height="94" rx="4" stroke="#2c3a72" stroke-width="2.2"/>
+      <path d="M8 22 L80 78 L152 22" stroke="#2c3a72" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M70 70 C70 58, 90 58, 90 70 C90 80, 70 84, 70 92 C70 84, 50 80, 50 70 C50 58, 70 58, 70 70 Z" stroke="#2c3a72" stroke-width="1.8" transform="translate(10,-2) scale(0.62)" />
+      <path d="M60 62 C64 50, 96 50, 100 62" stroke="#2c3a72" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="80" cy="58" r="6" stroke="#2c3a72" stroke-width="1.6"/>
+    </svg>
+    <div class="env-open">위로 드래그해서 열어보세요</div>
+    <div class="env-arrow">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 19V5M5 12l7-7 7 7" stroke="#5b699e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
 
-  <section>
-    <h2>일시</h2>
-    <p>2026년 10월 3일 토요일 오후 2시 30분</p>
-  </section>
+  <div id="invite">
+    <div class="tag">WEDDING INVITATION</div>
+    <div class="save-date">Save the Date</div>
+    <div class="date-line"><b>2026. 10. 03</b> SAT</div>
+    <div class="venue-line">오후 2시 30분<br>춘천미래컨벤션 4층</div>
 
-  <section>
-    <h2>장소</h2>
-    <p>춘천미래컨벤션 4층</p>
-  </section>
+    <svg class="deco-icon" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="18" r="8" stroke="#2c3a72" stroke-width="1.6"/>
+      <path d="M42 18 C28 10, 16 20, 20 30 C24 38, 36 34, 42 24" stroke="#2c3a72" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M58 18 C72 10, 84 20, 80 30 C76 38, 64 34, 58 24" stroke="#2c3a72" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M50 26 L50 40" stroke="#2c3a72" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M30 46 L70 46" stroke="#2c3a72" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M36 46 L44 40" stroke="#2c3a72" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M64 46 L56 40" stroke="#2c3a72" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
 
-  <section>
-    <h2>연락처 / 계좌번호</h2>
-    <p>신랑측: 000-0000-0000 (OO은행)<br>신부측: 000-0000-0000 (OO은행)</p>
-  </section>
+    <div class="photo-oval">
+      <img src="couple.jpg" alt="정제우 류다현">
+    </div>
+
+    <div class="names-script">정제우 &amp; 류다현</div>
+
+    <p class="greeting">
+      저희 두 사람이 새로운 시작을 함께합니다.<br>
+      귀한 걸음 하시어 축복해 주시면 감사하겠습니다.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="info-block">
+      <h3>When</h3>
+      <p>2026년 10월 3일 토요일<br>오후 2시 30분</p>
+    </div>
+
+    <div class="info-block">
+      <h3>Where</h3>
+      <p>춘천미래컨벤션 4층</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-block">
+      <h3>Account</h3>
+      <p>신랑측 000-0000-0000 (OO은행)<br>신부측 000-0000-0000 (OO은행)</p>
+    </div>
+  </div>
+
+  <footer>
+    <svg width="46" viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:14px;">
+      <path d="M50 66 C50 66 20 60 20 40 C20 26 34 22 42 32 C46 20 60 20 62 32 C68 22 80 28 78 40 C78 58 50 66 50 66 Z" stroke="#2c3a72" stroke-width="1.6"/>
+      <path d="M50 66 L50 20" stroke="#2c3a72" stroke-width="1.4"/>
+    </svg>
+    <div class="names-script">정제우 &amp; 류다현</div>
+    <div class="contact">문의사항은 언제든지 연락 주세요</div>
+  </footer>
+
 </div>
+
+<script>
+  (function(){
+    const envelope = document.getElementById('envelope');
+    let startY = 0;
+    let dragging = false;
+    let opened = false;
+    const threshold = () => window.innerHeight * 0.22;
+
+    function setTransform(px){
+      envelope.style.transform = `translateY(${px}px)`;
+    }
+
+    function onDown(e){
+      if(opened) return;
+      dragging = true;
+      startY = (e.touches ? e.touches[0].clientY : e.clientY);
+      envelope.style.transition = 'none';
+      envelope.classList.add('dragging');
+    }
+
+    function onMove(e){
+      if(!dragging || opened) return;
+      const y = (e.touches ? e.touches[0].clientY : e.clientY);
+      let delta = y - startY;
+      if(delta > 0) delta = 0; // only allow dragging upward
+      setTransform(delta);
+    }
+
+    function onUp(e){
+      if(!dragging || opened) return;
+      dragging = false;
+      envelope.classList.remove('dragging');
+      const y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY);
+      const delta = y - startY;
+      envelope.style.transition = 'transform .5s cubic-bezier(.22,.68,0,1.01)';
+
+      if(-delta > threshold()){
+        opened = true;
+        setTransform(-window.innerHeight);
+        setTimeout(()=>{ envelope.style.display = 'none'; }, 550);
+      } else {
+        setTransform(0);
+      }
+    }
+
+    envelope.addEventListener('mousedown', onDown);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+
+    envelope.addEventListener('touchstart', onDown, {passive:true});
+    envelope.addEventListener('touchmove', onMove, {passive:true});
+    envelope.addEventListener('touchend', onUp);
+  })();
+</script>
 </body>
 </html>
