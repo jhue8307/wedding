@@ -54,9 +54,17 @@ body {
   position: relative;
   overflow: visible;
 }
+.hero-main-photo::before {
+  content: "";
+  display: block;
+  padding-top: 115.75%; /* 926 / 800 - aspect-ratio 미지원 브라우저용 fallback */
+}
+@supports (aspect-ratio: 1 / 1) {
+  .hero-main-photo::before { display: none; }
+}
 .hero-main-photo img {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -198,7 +206,7 @@ body {
 }
 .couple-info-bg {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -238,7 +246,7 @@ body {
 }
 .parents-line .bg-torn {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -290,9 +298,20 @@ body {
 .gallery-cell {
   background: #d9d9d9;
   overflow: hidden;
+  position: relative;
   aspect-ratio: 134 / 122.43;
 }
+.gallery-cell::before {
+  content: "";
+  display: block;
+  padding-top: 91.36%; /* 122.43 / 134 - aspect-ratio 미지원 브라우저용 fallback */
+}
+@supports (aspect-ratio: 1 / 1) {
+  .gallery-cell::before { display: none; }
+}
 .gallery-cell img {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -446,7 +465,7 @@ body {
 .lightbox-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.92);
   z-index: 1000;
   align-items: center;
