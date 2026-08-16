@@ -109,15 +109,6 @@ body {
   width: 100%;
   height: auto;
 }
-.hero-title-amen {
-  position: absolute;
-  height: 38px;
-  left: 261px;
-  top: 336px;
-  width: 102px;
-}
-.hero-title-amen img { width: 100%; height: 100%; object-fit: cover; }
-
 .hero-title-stickers {
   position: absolute;
   display: flex;
@@ -129,9 +120,10 @@ body {
   width: 100%;
   padding: 20px;
 }
-.hero-title-1 { height: 50px; width: 138px; flex-shrink: 0; }
-.hero-title-2 { height: 44px; width: 38px; flex-shrink: 0; }
-.hero-title-3 { height: 33px; width: 87px; flex-shrink: 0; }
+.hero-title-1 { height: 48px; width: 131px; flex-shrink: 0; }
+.hero-title-2 { height: 42px; width: 36px; flex-shrink: 0; }
+.hero-title-3 { height: 31px; width: 83px; flex-shrink: 0; }
+.hero-title-4 { height: 36px; width: 97px; flex-shrink: 0; }
 .hero-title-stickers img { width: 100%; height: 100%; object-fit: cover; }
 
 .hero-address {
