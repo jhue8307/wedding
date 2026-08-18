@@ -27,15 +27,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 24px 30px 20px;
   position: relative;
   width: 100%;
 }
 .hero-photo-frame {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
+  gap: 2px;
+  align-items: center;
   position: relative;
   width: 100%;
 }
@@ -43,12 +43,12 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 30px;
+  padding: 22px 14px;
   position: relative;
   width: 100%;
 }
 .hero-main-photo {
-  aspect-ratio: 800 / 926;
+  aspect-ratio: 800 / 974;
   flex: 1 0 0;
   min-width: 1px;
   position: relative;
@@ -57,7 +57,7 @@ body {
 .hero-main-photo::before {
   content: "";
   display: block;
-  padding-top: 115.75%; /* 926 / 800 - aspect-ratio 미지원 브라우저용 fallback */
+  padding-top: 121.75%; /* 974 / 800 - aspect-ratio 미지원 브라우저용 fallback */
 }
 @supports (aspect-ratio: 1 / 1) {
   .hero-main-photo::before { display: none; }
@@ -67,82 +67,19 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
-
-/* 이름 스티커 (신랑/신부 이름, 사진 위 오버레이) */
-.hero-name-sticker {
-  position: absolute;
-  z-index: 2;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
-}
-.hero-name-sticker img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.hero-name-groom {
-  left: 13%;
-  top: 30%;
-  width: 32%;
-  transform: rotate(-4deg);
-}
-.hero-name-bride {
-  left: 62%;
-  top: 31%;
-  width: 27%;
-  transform: rotate(3deg);
-}
-
-/* 날짜 / 시간 스티커 (사진 아래) */
-.hero-date-time-stickers {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 0 24px;
-}
-.hero-date-sticker {
-  width: 56%;
-  transform: rotate(-2deg);
-}
-.hero-time-sticker {
-  width: 24%;
-  transform: rotate(2deg);
-}
-.hero-date-sticker img,
-.hero-time-sticker img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.hero-title-stickers {
-  position: absolute;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  top: -8px;
-  width: 100%;
-  padding: 20px;
-}
-.hero-title-1 { height: 48px; width: 131px; flex-shrink: 0; }
-.hero-title-2 { height: 42px; width: 36px; flex-shrink: 0; }
-.hero-title-3 { height: 31px; width: 83px; flex-shrink: 0; }
-.hero-title-4 { height: 36px; width: 97px; flex-shrink: 0; }
-.hero-title-stickers img { width: 100%; height: 100%; object-fit: cover; }
 
 .hero-address {
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13px;
   color: #000;
   text-align: center;
   width: 100%;
+  padding: 0 12px;
 }
-.hero-address p { margin: 0; line-height: 30px; }
+.hero-address p { margin: 0; line-height: 22px; }
 
 /* ---------- VERSE SECTION ---------- */
 .verse-section {
@@ -169,28 +106,28 @@ body {
 .verse-word-group { display: flex; align-items: center; }
 
 .verse-word img { display: block; height: 100%; width: 100%; object-fit: cover; }
-.vw-pyeongan { height: 40px; width: 96px; }
-.vw-maeneun  { height: 32px; width: 55px; }
-.vw-julro    { height: 44px; width: 51px; }
-.vw-seongryeongi { height: 39px; width: 85px; }
-.vw-hana     { height: 33px; width: 59px; }
-.vw-doege    { height: 33px; width: 61px; }
-.vw-hasin    { height: 35px; width: 62px; }
-.vw-geoseul  { height: 36px; width: 52px; }
-.vw-himsseo  { height: 41px; width: 59px; }
-.vw-jikira   { height: 33px; width: 77px; }
+.vw-pyeongan { height: 32px; width: 77px; }
+.vw-maeneun  { height: 26px; width: 44px; }
+.vw-julro    { height: 35px; width: 41px; }
+.vw-seongryeongi { height: 31px; width: 68px; }
+.vw-hana     { height: 26px; width: 47px; }
+.vw-doege    { height: 26px; width: 49px; }
+.vw-hasin    { height: 28px; width: 50px; }
+.vw-geoseul  { height: 29px; width: 42px; }
+.vw-himsseo  { height: 33px; width: 47px; }
+.vw-jikira   { height: 26px; width: 62px; }
 
 .verse-citation {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  width: 362px;
+  width: 290px;
   max-width: 100%;
 }
-.vc-book    { height: 32px; width: 102px; }
-.vc-chapter { height: 35.108px; width: 47px; }
-.vc-verse   { height: 38px; width: 45px; }
+.vc-book    { height: 26px; width: 82px; }
+.vc-chapter { height: 28px; width: 38px; }
+.vc-verse   { height: 30px; width: 36px; }
 .verse-citation img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- COUPLE INFO SECTION ---------- */
@@ -198,7 +135,7 @@ body {
   background: #fcfff0;
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 36px;
   align-items: center;
   padding: 30px 0;
   width: 100%;
@@ -254,7 +191,7 @@ body {
 }
 .parents-line p {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   margin: 0;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 700;
@@ -262,8 +199,8 @@ body {
   white-space: nowrap;
   color: #000;
 }
-.parents-line .role-line { font-size: 20px; }
-.parents-line .name-line { font-size: 23px; }
+.parents-line .role-line { font-size: 18px; }
+.parents-line .name-line { font-size: 22px; }
 
 .groom-line { align-items: flex-start; }
 .bride-line { align-items: flex-end; }
@@ -271,13 +208,17 @@ body {
 .child-photo-wrap {
   position: absolute;
   z-index: 1;
-  height: 204px;
-  width: 131px;
+  height: 172px;
+  width: 110px;
   bottom: 0;
   overflow: hidden;
 }
-.groom-line .child-photo-wrap { left: 194px; }
-.bride-line .child-photo-wrap { left: 25px; }
+.groom-line .child-photo-wrap { left: 228px; }
+.bride-line .child-photo-wrap {
+  left: 4px;
+  width: 145px;
+  height: 227px;
+}
 .bride-line .child-photo-wrap img { transform: scaleX(-1); }
 .child-photo-wrap img {
   position: absolute;
@@ -457,6 +398,95 @@ body {
   transition: background 0.2s ease, color 0.2s ease;
 }
 .map-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ---------- ACCOUNT SECTION ---------- */
+.account-section {
+  background: #fcfff0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 24px 60px;
+  width: 100%;
+}
+.account-title {
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #000;
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.account-title-sub {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #777;
+  margin-left: 6px;
+}
+.account-group {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 26px;
+}
+.account-group:last-child { margin-bottom: 0; }
+.account-group-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #000;
+}
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ececdf;
+}
+.account-row:last-child { border-bottom: none; }
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.account-name {
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+}
+.account-bank {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #666;
+}
+.account-copy-btn {
+  flex-shrink: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #000;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.account-copy-btn:hover {
+  background: #000;
+  color: #fff;
+}
+.account-copy-btn.copied {
   background: #000;
   color: #fff;
 }

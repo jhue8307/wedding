@@ -62,4 +62,44 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'ArrowLeft') showPrev();
     if (e.key === 'ArrowRight') showNext();
   });
+
+  // ---------- 계좌번호 복사 버튼 (은행명 빼고 숫자만 복사) ----------
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+
+  document.querySelectorAll('.account-copy-btn').forEach(function (btn) {
+    var originalLabel = btn.textContent;
+    btn.addEventListener('click', function () {
+      var raw = btn.getAttribute('data-account') || '';
+      var digitsOnly = raw.replace(/[^0-9]/g, '');
+
+      function showCopied() {
+        btn.textContent = '복사됨';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = originalLabel;
+          btn.classList.remove('copied');
+        }, 1500);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(digitsOnly).then(showCopied).catch(function () {
+          fallbackCopy(digitsOnly);
+          showCopied();
+        });
+      } else {
+        fallbackCopy(digitsOnly);
+        showCopied();
+      }
+    });
+  });
 });
