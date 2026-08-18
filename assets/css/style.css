@@ -73,13 +73,13 @@ body {
 .hero-address {
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
   color: #000;
   text-align: center;
   width: 100%;
   padding: 0 12px;
 }
-.hero-address p { margin: 0; line-height: 28px; }
+.hero-address p { margin: 0; line-height: 30px; }
 
 /* ---------- VERSE SECTION ---------- */
 .verse-section {
@@ -200,7 +200,7 @@ body {
   color: #000;
 }
 .parents-line .role-line { font-size: 18px; }
-.parents-line .name-line { font-size: 22px; }
+.parents-line .name-line { font-size: 21px; }
 
 .groom-line { align-items: flex-start; }
 .bride-line { align-items: flex-end; }
