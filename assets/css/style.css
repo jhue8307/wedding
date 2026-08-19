@@ -330,15 +330,15 @@ body {
   max-width: 320px;
 }
 .cal-weekday {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--color-green);
   text-align: center;
 }
 .cal-day {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;
   font-size: 14px;
   color: var(--color-green);
@@ -373,7 +373,7 @@ body {
 }
 .info-group:last-child { margin-bottom: 0; }
 .info-group-title {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-weight: 700;
   font-size: 14px;
   color: var(--color-green);
@@ -393,7 +393,7 @@ body {
 .info-list li {
   position: relative;
   padding-left: 14px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;
   font-size: 13.5px;
   line-height: 21px;
@@ -447,8 +447,8 @@ body {
 .map-btn {
   flex: 1;
   text-align: center;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
   font-size: 14px;
   color: var(--color-green);
   text-decoration: none;
@@ -478,7 +478,7 @@ body {
 }
 .account-group:last-child { margin-bottom: 0; }
 .account-group-title {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-weight: 700;
   font-size: 14px;
   color: var(--color-green);
@@ -507,15 +507,15 @@ body {
   color: var(--color-green);
 }
 .account-bank {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;
   font-size: 12.5px;
   color: var(--color-green-soft);
 }
 .account-copy-btn {
   flex-shrink: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700;
   font-size: 12px;
   color: var(--color-green);
   background: #fff;
@@ -587,7 +587,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   color: var(--color-green-bright);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   font-size: 13px;
   letter-spacing: 0.05em;
 }
